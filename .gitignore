@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+__pycache__
+.git
+test.py
+build
+dist
+*.spec
+
+secret_token.py
+screenshot.jpg

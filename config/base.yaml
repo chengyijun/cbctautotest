@@ -1,0 +1,43 @@
+# Feelin 主窗口标题
+feelin_window_title: 'DFT 1.0'
+# 影像中心
+image_center_pos: 53,649
+# 开始【登记】按钮坐标
+record_btn_pos: 191,611
+# 【姓名】坐标
+patient_name_pos: 575,319
+# 【设备类型】坐标
+device_type_pos: 578,518
+# 确认【登记】按钮坐标
+add_record_btn_pos: 506, 816
+# 从【设备类型】 选择CT偏移量
+ct_model: 0,166
+# 从【设备类型】 选择PX偏移量
+px_model: 0,196
+# 类型分类细化按钮
+model_type_detail: 756,568
+# 从【设备类型】 选择DX偏移量
+dx_model: 0,226
+dx_model_2: 77,51
+# 从【设备类型】 选择TMJ偏移量
+tmj_model: 0,196
+tmj_model_2: 72,60
+# 第一个检查记录位置
+first_record_pos: 585,185
+# 机器准备按钮坐标
+machine_ready: 208,976
+# 确认拍摄按钮坐标
+take_shot: 316,976
+# 完成拍摄按钮坐标
+finish_take_shot: 424,976
+
+
+# 确认拍摄之前的等待时间 秒
+wait_before_qrps_value: 10.0
+# 完全加载拍摄界面之前的等待时间
+wait_before_ps_ui_load_value: 5.0
+# TMJ第二次拍摄之前的准备时间
+wait_before_tmj_second_ps_value: 15.0
+# 重建等待时间
+wait_before_rebuild_value: 10.0
+
