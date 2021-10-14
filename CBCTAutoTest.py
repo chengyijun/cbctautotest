@@ -10,7 +10,7 @@ from system_hotkey import SystemHotkey
 from aboutui import Ui_Dialog
 from main import CBCTAutoTest
 from mainui import Ui_MainWindow
-import  rs_rc
+
 
 class Worker(QThread):
 
@@ -141,7 +141,13 @@ class MainWin(Ui_MainWindow, QMainWindow):
         print(self.verticalSlider_4.value())
         print("start test")
         self.worker.num = int(self.lineEdit.text()) if self.lineEdit.text() != '' else 10
-        self.worker.wait = float(self.lineEdit_2.text()) if self.lineEdit_2.text() != '' else 0.5
+        # self.worker.wait = float(self.lineEdit_2.text()) if self.lineEdit_2.text() != '' else 0.5
+
+        if any([self.lineEdit_2.text() == '', self.lineEdit_2.text() == '0']):
+            self.worker.wait = 0.2
+        else:
+            self.worker.wait = float(self.lineEdit_2.text())
+
         self.worker.weights = [self.verticalSlider.value(), self.verticalSlider_2.value(),
                                self.verticalSlider_3.value(),
                                self.verticalSlider_4.value()]
