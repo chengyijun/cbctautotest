@@ -72,24 +72,6 @@ def wait_until_checkpoint_appear(cp: str) -> None:
             break
 
 
-def check_menu_closed(cp: str) -> bool:
-    """
-    检查菜单初始状态是否是闭合的
-    闭合-True
-    展开-False
-    :param cp:
-    :return:
-    """
-
-    # 每次图像检查点比对之前 先将鼠标挪开 以免干扰识别判断
-    click_action(100, 100, 0, 0)
-    # sleep(1)
-    box = pyautogui.locateOnScreen(join(CP_IMAGES_PATH, cp))
-    if box is not None:
-        return True
-    return False
-
-
 def get_timestamp() -> str:
     """
     获取时间戳放大1w后的后四位字符串
@@ -136,29 +118,6 @@ def weight_choice(weight: List[int]) -> str:
             return targets[i]
 
 
-def menu_init() -> None:
-    """
-    菜单初始化
-    :return:
-    """
-    # 选择第一位患者 240 260
-    # 先切换到 【全部】
-    click_action(248, 80)
-    click_action(*get_pos('first_patient_pos'))
-    # 点击【处方】
-    click_action(*get_pos('prescription_tab_pos'))
-    #     441 188
-    # 459 216
-    is_menu_closed = check_menu_closed("cp_menu.png")
-    if not is_menu_closed:
-        # 如果菜单未闭合 先进行初始化闭合
-        click_double_action(498, 185)
-    # 展开一级菜单
-    click_double_action(498, 185)
-    # 展开二级菜单
-    click_double_action(529, 218)
-
-
 def wait_before_qrps() -> None:
     """
     确认拍摄前等待的时间 秒
@@ -201,15 +160,6 @@ def read_config_data() -> Dict:
     return config_data
 
 
-def get_model_menu_pos(model_config_name: str) -> Tuple[int]:
-    """
-    获取四种模式菜单项坐标
-    :param model_config_name: 四种菜单模式在配置文件中的名字 如ct_pos
-    :return:
-    """
-    return eval(read_config_data().get(model_config_name))
-
-
 def get_pos(config_name: str) -> Tuple[int]:
     """
     获取四种模式菜单项坐标
@@ -217,15 +167,3 @@ def get_pos(config_name: str) -> Tuple[int]:
     :return:
     """
     return eval(read_config_data().get(config_name))
-
-
-def select_doctor(x: int, y: int) -> None:
-    """
-    处方界面选择医生
-    :param x:
-    :param y:
-    :return:
-    """
-    click_action(x, y)
-    pyautogui.moveRel(xOffset=0, yOffset=80, duration=0.5)
-    pyautogui.click()
